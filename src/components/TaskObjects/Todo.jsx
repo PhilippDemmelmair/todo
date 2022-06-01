@@ -1,20 +1,23 @@
 import styled from 'styled-components'
 import React from 'react'
 
-function Todo({ task, completed, archived, toggleComplete }) {
+function Todo({ task, completed, archived, toggleComplete, toggleArchived }) {
   return (
     <>
-      <Task completed={completed}>
+      <Task completed={completed} archived={archived}>
         {task}
 
         <ButtonBox>
           <Button onClick={toggleComplete}>
-            {completed ? 'Incomplete' : 'Complete'}
+            {completed ? 'Open again' : 'Close now'}
           </Button>
-          {completed ? <Button>Archive</Button> : <Button>Delete</Button>}
+          {completed ? (
+            <Button onClick={toggleArchived}>Archive</Button>
+          ) : (
+            <Button>Delete</Button>
+          )}
         </ButtonBox>
       </Task>
-      {/* TODO Add add-function */}
     </>
   )
 }
@@ -22,11 +25,11 @@ function Todo({ task, completed, archived, toggleComplete }) {
 export { Todo }
 
 const Task = styled.article`
+  display: ${(props) => (props.archived ? 'none' : 'flex')};
   background: ${(props) => (props.completed ? 'green' : 'red')};
   height: 10vh;
   border: 2px solid #fff;
   border-radius: 16px;
-  display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
