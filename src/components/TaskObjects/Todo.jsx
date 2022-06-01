@@ -1,14 +1,16 @@
 import styled from 'styled-components'
 import React from 'react'
 
-function Todo({ task, completed, archived }) {
+function Todo({ task, completed, archived, toggleComplete }) {
   return (
     <>
       <Task completed={completed}>
         {task}
 
         <ButtonBox>
-          <Button>{completed ? 'Incomplete' : 'Complete'}</Button>
+          <Button onClick={toggleComplete}>
+            {completed ? 'Incomplete' : 'Complete'}
+          </Button>
           {completed ? <Button>Archive</Button> : <Button>Delete</Button>}
         </ButtonBox>
       </Task>

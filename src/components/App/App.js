@@ -32,7 +32,16 @@ function App() {
       archived: false,
     },
   ])
-  // alert(todoList[0].task)
+
+  function toggleComplete(id) {
+    const toggledTodos = todoList.map((task) => {
+      if (id === task.id) {
+        return { ...task, completed: !task.completed }
+      }
+      return task
+    })
+    setTodo(toggledTodos)
+  }
   return (
     <>
       <Header>
@@ -46,6 +55,7 @@ function App() {
               task={i.task}
               completed={i.completed}
               archived={i.archived}
+              toggleComplete={() => toggleComplete(i.id)}
             />
           )
         })}
