@@ -3,10 +3,12 @@ import styled from 'styled-components'
 import { nanoid } from 'nanoid'
 
 import { Todo } from '../TaskObjects/Todo'
+import { Add } from '../TaskObjects/Add'
 
 function App() {
   const [todoList, setTodo] = useState([
     // TODO store in localStorage
+    // TODO find better colours
     {
       id: nanoid(),
       task: 'feed sharks with enemies',
@@ -58,12 +60,24 @@ function App() {
     const filteredTodos = todoList.filter((task) => task.id !== id)
     setTodo(filteredTodos)
   }
+
+  function addTodo(text) {
+    console.log(typeof text)
+    const newTodos = [
+      { id: nanoid(), task: text, completed: false, archived: false },
+      ...todoList,
+    ]
+    setTodo(newTodos)
+  }
+
+  console.table(todoList)
   return (
     <>
       <Header>
         <Title>SUPER IMPORTANT TODO APP</Title>
       </Header>
       <Body>
+        <Add addTodo={addTodo} />
         {todoList.map((i) => {
           return (
             <Todo
