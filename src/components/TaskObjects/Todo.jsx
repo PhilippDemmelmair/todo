@@ -1,7 +1,14 @@
 import styled from 'styled-components'
 import React from 'react'
 
-function Todo({ task, completed, archived, toggleComplete, toggleArchived }) {
+function Todo({
+  task,
+  completed,
+  archived,
+  toggleComplete,
+  toggleArchived,
+  deleteTask,
+}) {
   return (
     <>
       <Task completed={completed} archived={archived}>
@@ -14,7 +21,7 @@ function Todo({ task, completed, archived, toggleComplete, toggleArchived }) {
           {completed ? (
             <Button onClick={toggleArchived}>Archive</Button>
           ) : (
-            <Button>Delete</Button>
+            <Button onClick={deleteTask}>Delete</Button>
           )}
         </ButtonBox>
       </Task>

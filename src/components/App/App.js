@@ -53,6 +53,11 @@ function App() {
     console.log('toggled')
     setTodo(toggledTodos)
   }
+
+  function deleteTask(id) {
+    const filteredTodos = todoList.filter((task) => task.id !== id)
+    setTodo(filteredTodos)
+  }
   return (
     <>
       <Header>
@@ -68,6 +73,7 @@ function App() {
               archived={i.archived}
               toggleComplete={() => toggleComplete(i.id)}
               toggleArchived={() => toggleArchived(i.id)}
+              deleteTask={() => deleteTask(i.id)}
             />
           )
         })}
