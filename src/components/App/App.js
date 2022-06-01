@@ -1,31 +1,32 @@
 import { useState } from 'react'
 import styled from 'styled-components'
+import { nanoid } from 'nanoid'
 
 import { Todo } from '../TaskObjects/Todo'
 
 function App() {
   const [todoList, setTodo] = useState([
-    // TODO add nanoid for id
+    // TODO store in localStorage
     {
-      id: 1,
+      id: nanoid(),
       task: 'feed sharks with enemies',
       completed: true,
       archived: false,
     },
     {
-      id: 2,
+      id: nanoid(),
       task: 'rob atombombs with supercool style plan',
       completed: true,
       archived: false,
     },
     {
-      id: 3,
+      id: nanoid(),
       task: 'threat world with mass destruction',
       completed: false,
       archived: false,
     },
     {
-      id: 4,
+      id: nanoid(),
       task: 'take over world dominance',
       completed: false,
       archived: false,
