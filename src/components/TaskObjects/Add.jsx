@@ -5,6 +5,7 @@ function Add({ addTodo }) {
   const [text, setText] = useState('')
 
   return (
+    // TODO add function to prevent empty tasks
     <Form
       onSubmit={(event) => {
         // console.log(text)

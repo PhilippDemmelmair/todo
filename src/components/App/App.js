@@ -1,39 +1,27 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 import { nanoid } from 'nanoid'
+import React from 'react'
 
 import { Todo } from '../TaskObjects/Todo'
 import { Add } from '../TaskObjects/Add'
 
+const defaultTask = [
+  {
+    id: nanoid(),
+    task: 'write new task',
+    completed: false,
+    archived: false,
+  },
+]
+
 function App() {
-  const [todoList, setTodo] = useState([
+  const [todoList, setTodo] = useState(
     // TODO store in localStorage
     // TODO find better colours
-    {
-      id: nanoid(),
-      task: 'feed sharks with enemies',
-      completed: true,
-      archived: false,
-    },
-    {
-      id: nanoid(),
-      task: 'rob atombombs with supercool style plan',
-      completed: true,
-      archived: false,
-    },
-    {
-      id: nanoid(),
-      task: 'threat world with mass destruction',
-      completed: false,
-      archived: false,
-    },
-    {
-      id: nanoid(),
-      task: 'take over world dominance',
-      completed: false,
-      archived: false,
-    },
-  ])
+
+    JSON.parse(localStorage.getItem('todoList')) || defaultTask
+  )
 
   function toggleComplete(id) {
     const toggledTodos = todoList.map((task) => {
@@ -69,6 +57,10 @@ function App() {
     ]
     setTodo(newTodos)
   }
+
+  React.useEffect(() => {
+    localStorage.setItem('todoList', JSON.stringify(todoList))
+  }, [todoList])
 
   console.table(todoList)
   return (
