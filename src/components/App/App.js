@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 import { nanoid } from 'nanoid'
+import React from 'react'
 
 import { Todo } from '../TaskObjects/Todo'
 import { Add } from '../TaskObjects/Add'
@@ -56,6 +57,10 @@ function App() {
     ]
     setTodo(newTodos)
   }
+
+  React.useEffect(() => {
+    localStorage.setItem('todoList', JSON.stringify(todoList))
+  }, [todoList])
 
   console.table(todoList)
   return (
