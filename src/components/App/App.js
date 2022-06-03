@@ -26,29 +26,36 @@ function App() {
   return (
     <>
       <Router>
-        <Header>
-          {/* TODO Header own component */}
-          <Title>SUPER IMPORTANT TODO APP</Title>
-          <NavBar>
-            <Link to="/">
-              <LinkText>Home</LinkText>
-            </Link>
-
-            <Link to="/random">
-              <LinkText>Random</LinkText>
-            </Link>
-
-            <Link to="/archive">
-              <LinkText>Archive</LinkText>
-            </Link>
-          </NavBar>
-        </Header>
+        <Header />
         <Routes>
           <Route path="/random" element={<Random />}></Route>
           <Route path="/archive" element={<Archive />}></Route>
           <Route path="/" element={<Home />}></Route>
         </Routes>
       </Router>
+    </>
+  )
+}
+
+function Header() {
+  return (
+    <>
+      <HeaderStyle>
+        <Title>SUPER IMPORTANT TODO APP</Title>
+        <NavBar>
+          <Link to="/">
+            <LinkText>Home</LinkText>
+          </Link>
+
+          <Link to="/random">
+            <LinkText>Random</LinkText>
+          </Link>
+
+          <Link to="/archive">
+            <LinkText>Archive</LinkText>
+          </Link>
+        </NavBar>
+      </HeaderStyle>
     </>
   )
 }
@@ -137,7 +144,7 @@ const LinkText = styled.span`
   padding: 0.2em 1em;
 `
 
-const Header = styled.header`
+const HeaderStyle = styled.header`
   background-color: #282c34;
   height: 10vh;
   display: flex;
