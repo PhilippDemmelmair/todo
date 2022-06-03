@@ -13,6 +13,8 @@ import {
 import { Todo } from '../TaskObjects/Todo'
 import { Add } from '../TaskObjects/Add'
 import { Header } from '../Header'
+import useTodo from '../../common/useTodo'
+import shallow from 'zustand/shallow'
 
 const defaultTask = [
   {
@@ -38,30 +40,8 @@ function App() {
   )
 }
 
-// function Header() {
-//   return (
-//     <>
-//       <HeaderStyle>
-//         <Title>SUPER IMPORTANT TODO APP</Title>
-//         <NavBar>
-//           <Link to="/">
-//             <LinkText>Home</LinkText>
-//           </Link>
-
-//           <Link to="/random">
-//             <LinkText>Random</LinkText>
-//           </Link>
-
-//           <Link to="/archive">
-//             <LinkText>Archive</LinkText>
-//           </Link>
-//         </NavBar>
-//       </HeaderStyle>
-//     </>
-//   )
-// }
-
 function Home() {
+  // TODO set globalState
   const [todoList, setTodo] = useState(
     JSON.parse(localStorage.getItem('todoList')) || defaultTask
   )
@@ -93,6 +73,9 @@ function Home() {
   }
 
   function addTodo(text) {
+    // TODO input validating
+    // not possible if empty
+    // not posssible if too long
     console.log(typeof text)
     const newTodos = [
       { id: nanoid(), task: text, completed: false, archived: false },
@@ -104,21 +87,28 @@ function Home() {
   React.useEffect(() => {
     localStorage.setItem('todoList', JSON.stringify(todoList))
   }, [todoList])
+
+  const todoIds = useTodo(
+    (state) =>
+      state.todos.filter((todo) => !todo.archived).map((todo) => todo.id),
+    shallow
+  )
   return (
     <>
       <Body>
         <Add addTodo={addTodo} />
-        {todoList.map((i) => {
+        {todoIds.map((i) => {
           return (
-            <Todo
-              key={i.id}
-              task={i.task}
-              completed={i.completed}
-              archived={i.archived}
-              toggleComplete={() => toggleComplete(i.id)}
-              toggleArchived={() => toggleArchived(i.id)}
-              deleteTask={() => deleteTask(i.id)}
-            />
+            // <Todo
+            //   key={i.id}
+            //   task={i.task}
+            //   completed={i.completed}
+            //   archived={i.archived}
+            //   toggleComplete={() => toggleComplete(i.id)}
+            //   toggleArchived={() => toggleArchived(i.id)}
+            //   deleteTask={() => deleteTask(i.id)}
+            // />
+            <li>Something</li>
           )
         })}
       </Body>
