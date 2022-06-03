@@ -47,7 +47,8 @@ const useTodo = create(
       // Function to switch between archived and not archived
       toggleArchived: (id) =>
         set((state) => ({
-          todos: state.todo.map((todo) => {
+          todos: state.todos.map((todo) => {
+            console.log('toggle archived')
             if (id === todo.id) {
               return { ...todo, archived: !todo.archived }
             }
@@ -57,7 +58,7 @@ const useTodo = create(
       // Function to delete an uncompleted task
       deleteTask: (id) =>
         set((state) => ({
-          todos: state.todo.filter((task) => task.id !== id),
+          todos: state.todos.filter((task) => task.id !== id),
         })),
       // Function to add new task
       //   TODO Input validation, if empoty string or if string to long

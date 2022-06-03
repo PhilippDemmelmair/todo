@@ -1,27 +1,25 @@
 import styled from 'styled-components'
 import React from 'react'
+import useTodo from '../../common/useTodo'
 
-function Todo({
-  task,
-  completed,
-  archived,
-  toggleComplete,
-  toggleArchived,
-  deleteTask,
-}) {
+function Todo({ id }) {
+  const toggleComplete = useTodo((state) => state.toggleCompleted)
+  const toggleArchived = useTodo((state) => state.toggleArchived)
+  const deleteTask = useTodo((state) => state.deleteTask)
+  const todo = useTodo((state) => state.todos.find((todo) => todo.id === id))
   return (
     <>
-      <Task completed={completed} archived={archived}>
-        {task}
+      <Task completed={todo.completed} archived={todo.archived}>
+        {todo.text}
 
         <ButtonBox>
-          <Button onClick={toggleComplete}>
-            {completed ? 'Open again' : 'Close now'}
+          <Button onClick={() => toggleComplete(id)}>
+            {todo.completed ? 'Open again' : 'Close now'}
           </Button>
-          {completed ? (
-            <Button onClick={toggleArchived}>Archive</Button>
+          {todo.completed ? (
+            <Button onClick={() => toggleArchived(id)}>Archive</Button>
           ) : (
-            <Button onClick={deleteTask}>Delete</Button>
+            <Button onClick={() => deleteTask(id)}>Delete</Button>
           )}
         </ButtonBox>
       </Task>
