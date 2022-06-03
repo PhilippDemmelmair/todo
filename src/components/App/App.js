@@ -79,15 +79,17 @@ function App() {
         <Title>SUPER IMPORTANT TODO APP</Title>
         <Router>
           <NavBar>
-            <NavItem>
-              <Link to="/">Home</Link>
-            </NavItem>
-            <NavItem>
-              <Link to="/random">Random</Link>
-            </NavItem>
-            <NavItem>
-              <Link to="/archive">Archive</Link>
-            </NavItem>
+            <Link to="/">
+              <LinkText>Home</LinkText>
+            </Link>
+
+            <Link to="/random">
+              <LinkText>Random</LinkText>
+            </Link>
+
+            <Link to="/archive">
+              <LinkText>Archive</LinkText>
+            </Link>
           </NavBar>
           <Routes>
             <Route path="/random" element={<Random />}></Route>
@@ -129,6 +131,15 @@ function Random() {
 }
 
 // TODO auslagern
+const LinkText = styled.span`
+  color: #fff;
+  textdecoration: none;
+  font-size: 1.2rem;
+  margin: 1em;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  padding: 0.2em 1em;
+`
 
 const Header = styled.header`
   background-color: #282c34;
@@ -150,17 +161,8 @@ const Body = styled.body`
   background: #282c34;
   padding: 10vw;
 `
-
-const NavItem = styled.button`
-  background: #fff;
-  border-radius: 8px;
-  padding: 10px 20px;
-  color: #fff;
-  background: transparent;
-  border: 2px solid #fff;
-`
 const NavBar = styled.nav`
-  border: 1px solid #a1a1a1;
+  // border: 1px solid #a1a1a1;
   border-radius: 8px;
   width: 30vw;
   padding: 1vh;
