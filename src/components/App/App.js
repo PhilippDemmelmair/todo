@@ -41,75 +41,19 @@ function App() {
 }
 
 function Home() {
-  // TODO set globalState
-  const [todoList, setTodo] = useState(
-    JSON.parse(localStorage.getItem('todoList')) || defaultTask
-  )
-
-  function toggleComplete(id) {
-    const toggledTodos = todoList.map((task) => {
-      if (id === task.id) {
-        return { ...task, completed: !task.completed }
-      }
-      return task
-    })
-    setTodo(toggledTodos)
-  }
-
-  function toggleArchived(id) {
-    const toggledTodos = todoList.map((task) => {
-      if (id === task.id) {
-        return { ...task, archived: !task.archived }
-      }
-      return task
-    })
-    console.log('toggled')
-    setTodo(toggledTodos)
-  }
-
-  function deleteTask(id) {
-    const filteredTodos = todoList.filter((task) => task.id !== id)
-    setTodo(filteredTodos)
-  }
-
-  function addTodo(text) {
-    // TODO input validating
-    // not possible if empty
-    // not posssible if too long
-    console.log(typeof text)
-    const newTodos = [
-      { id: nanoid(), task: text, completed: false, archived: false },
-      ...todoList,
-    ]
-    setTodo(newTodos)
-  }
-
-  React.useEffect(() => {
-    localStorage.setItem('todoList', JSON.stringify(todoList))
-  }, [todoList])
-
   const todoIds = useTodo(
     (state) =>
       state.todos.filter((todo) => !todo.archived).map((todo) => todo.id),
     shallow
   )
+  console.table(todoIds)
   return (
     <>
       <Body>
-        <Add addTodo={addTodo} />
-        {todoIds.map((i) => {
-          return (
-            // <Todo
-            //   key={i.id}
-            //   task={i.task}
-            //   completed={i.completed}
-            //   archived={i.archived}
-            //   toggleComplete={() => toggleComplete(i.id)}
-            //   toggleArchived={() => toggleArchived(i.id)}
-            //   deleteTask={() => deleteTask(i.id)}
-            // />
-            <li>Something</li>
-          )
+        {/* <Add addTodo={addTodo} /> */}
+
+        {todoIds.map((id) => {
+          return <Todo key={id} id={id} />
         })}
       </Body>
     </>
