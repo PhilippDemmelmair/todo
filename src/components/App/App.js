@@ -50,10 +50,9 @@ function Home() {
   return (
     <>
       <Body>
-        {/* <Add addTodo={addTodo} /> */}
+        <Add />
 
         {todoIds.map((id) => {
-          // TODO implement functions in todo component
           return <Todo key={id} id={id} />
         })}
       </Body>

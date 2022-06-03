@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import styled from 'styled-components'
+import useTodo from '../../common/useTodo'
 
-function Add({ addTodo }) {
+function Add() {
   const [text, setText] = useState('')
+  const addTodo = useTodo((state) => state.addTodo)
 
   return (
     // TODO add function to prevent empty tasks
