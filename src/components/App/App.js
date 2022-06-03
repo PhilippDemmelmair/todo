@@ -23,13 +23,38 @@ const defaultTask = [
 ]
 
 function App() {
-  const [todoList, setTodo] = useState(
-    // TODO find better colours
-    // TODO move this to global state to get it out from here, CustomHook
-    // TODO Refactoring
-    // TODO ReadMe anpassen
-    // TODO MobileView
+  return (
+    <>
+      <Router>
+        <Header>
+          {/* TODO Header own component */}
+          <Title>SUPER IMPORTANT TODO APP</Title>
+          <NavBar>
+            <Link to="/">
+              <LinkText>Home</LinkText>
+            </Link>
 
+            <Link to="/random">
+              <LinkText>Random</LinkText>
+            </Link>
+
+            <Link to="/archive">
+              <LinkText>Archive</LinkText>
+            </Link>
+          </NavBar>
+        </Header>
+        <Routes>
+          <Route path="/random" element={<Random />}></Route>
+          <Route path="/archive" element={<Archive />}></Route>
+          <Route path="/" element={<Home />}></Route>
+        </Routes>
+      </Router>
+    </>
+  )
+}
+
+function Home() {
+  const [todoList, setTodo] = useState(
     JSON.parse(localStorage.getItem('todoList')) || defaultTask
   )
 
@@ -71,33 +96,8 @@ function App() {
   React.useEffect(() => {
     localStorage.setItem('todoList', JSON.stringify(todoList))
   }, [todoList])
-
-  // console.table(todoList)
   return (
     <>
-      <Header>
-        <Title>SUPER IMPORTANT TODO APP</Title>
-        <Router>
-          <NavBar>
-            <Link to="/">
-              <LinkText>Home</LinkText>
-            </Link>
-
-            <Link to="/random">
-              <LinkText>Random</LinkText>
-            </Link>
-
-            <Link to="/archive">
-              <LinkText>Archive</LinkText>
-            </Link>
-          </NavBar>
-          <Routes>
-            <Route path="/random" element={<Random />}></Route>
-            <Route path="/archive" element={<Archive />}></Route>
-            <Route path="/" element={<Home />}></Route>
-          </Routes>
-        </Router>
-      </Header>
       <Body>
         <Add addTodo={addTodo} />
         {todoList.map((i) => {
@@ -116,10 +116,6 @@ function App() {
       </Body>
     </>
   )
-}
-
-function Home() {
-  return <h2>Home</h2>
 }
 
 function Archive() {
