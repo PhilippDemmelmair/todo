@@ -13,6 +13,7 @@ function Add() {
         // console.log(text)
         event.preventDefault()
         addTodo(text)
+        // TODO input should disappear or return to a placeholder
       }}
     >
       <label htmlFor="input-todo">New Task:</label>
