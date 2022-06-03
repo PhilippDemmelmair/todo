@@ -2,9 +2,17 @@ import { useState } from 'react'
 import styled from 'styled-components'
 import { nanoid } from 'nanoid'
 import React from 'react'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Routes,
+} from 'react-router-dom'
 
 import { Todo } from '../TaskObjects/Todo'
 import { Add } from '../TaskObjects/Add'
+import { Header } from '../Header'
 
 const defaultTask = [
   {
@@ -16,10 +24,45 @@ const defaultTask = [
 ]
 
 function App() {
-  const [todoList, setTodo] = useState(
-    // TODO store in localStorage
-    // TODO find better colours
+  return (
+    <>
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/random" element={<Random />}></Route>
+          <Route path="/archive" element={<Archive />}></Route>
+          <Route path="/" element={<Home />}></Route>
+        </Routes>
+      </Router>
+    </>
+  )
+}
 
+// function Header() {
+//   return (
+//     <>
+//       <HeaderStyle>
+//         <Title>SUPER IMPORTANT TODO APP</Title>
+//         <NavBar>
+//           <Link to="/">
+//             <LinkText>Home</LinkText>
+//           </Link>
+
+//           <Link to="/random">
+//             <LinkText>Random</LinkText>
+//           </Link>
+
+//           <Link to="/archive">
+//             <LinkText>Archive</LinkText>
+//           </Link>
+//         </NavBar>
+//       </HeaderStyle>
+//     </>
+//   )
+// }
+
+function Home() {
+  const [todoList, setTodo] = useState(
     JSON.parse(localStorage.getItem('todoList')) || defaultTask
   )
 
@@ -61,13 +104,8 @@ function App() {
   React.useEffect(() => {
     localStorage.setItem('todoList', JSON.stringify(todoList))
   }, [todoList])
-
-  console.table(todoList)
   return (
     <>
-      <Header>
-        <Title>SUPER IMPORTANT TODO APP</Title>
-      </Header>
       <Body>
         <Add addTodo={addTodo} />
         {todoList.map((i) => {
@@ -88,20 +126,15 @@ function App() {
   )
 }
 
-const Header = styled.header`
-  background-color: #282c34;
-  height: 10vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 1px solid #fff;
-`
+function Archive() {
+  return <h2>Archive</h2>
+}
 
-const Title = styled.h1`
-  font-size: calc(10px + 2vmin);
-  color: white;
-`
+function Random() {
+  return <h2>Random</h2>
+}
+
+// TODO auslagern
 
 const Body = styled.body`
   height: 90vh;
