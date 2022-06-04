@@ -1,4 +1,3 @@
-import { nanoid } from 'nanoid'
 import React from 'react'
 import {
   BrowserRouter as Router,
@@ -10,6 +9,8 @@ import {
 
 import { Header } from '../Header'
 import { Home } from '../Home'
+import { Random } from '../Random'
+import { Archive } from '../Archive'
 
 function App() {
   return (
@@ -24,14 +25,6 @@ function App() {
       </Router>
     </>
   )
-}
-
-function Archive() {
-  return <h2>Archive</h2>
-}
-
-function Random() {
-  return <h2>Random</h2>
 }
 
 export default App

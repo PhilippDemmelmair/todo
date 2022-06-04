@@ -1,8 +1,9 @@
 import useTodo from './../common/useTodo'
 import shallow from 'zustand/shallow'
+
 import { Todo } from './TaskObjects/Todo'
 import { Add } from './TaskObjects/Add'
-import styled from 'styled-components'
+import { Body } from './styledComponents'
 
 function Home() {
   const todoIds = useTodo(
@@ -25,9 +26,3 @@ function Home() {
 }
 
 export { Home }
-
-const Body = styled.body`
-  height: 90vh;
-  background: #282c34;
-  padding: 10vw;
-`
