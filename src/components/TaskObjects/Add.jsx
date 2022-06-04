@@ -7,7 +7,6 @@ function Add() {
   const addTodo = useTodo((state) => state.addTodo)
 
   return (
-    // TODO add function to prevent empty tasks
     <Form
       onSubmit={(event) => {
         // console.log(text)
@@ -23,7 +22,9 @@ function Add() {
         value={text}
         onChange={(event) => setText(event.target.value)}
       />
-      <Button type="submit">Add</Button>
+      <Button disabled={!text || text.length > 50} type="submit">
+        Add
+      </Button>
     </Form>
   )
 }
@@ -48,7 +49,7 @@ const TextInput = styled.input`
   width: 60%;
 `
 const Button = styled.button`
-  background: transparent;
+  background: ${(props) => (props.disabled ? 'red' : 'green')};
   color: #fff;
   padding: 10px 20px;
   width: 15%;
