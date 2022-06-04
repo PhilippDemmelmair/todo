@@ -1,16 +1,18 @@
 import { useState } from 'react'
 import styled from 'styled-components'
+import useTodo from '../../common/useTodo'
 
-function Add({ addTodo }) {
+function Add() {
   const [text, setText] = useState('')
+  const addTodo = useTodo((state) => state.addTodo)
 
   return (
-    // TODO add function to prevent empty tasks
     <Form
       onSubmit={(event) => {
         // console.log(text)
         event.preventDefault()
         addTodo(text)
+        // TODO input should disappear or return to a placeholder
       }}
     >
       <label htmlFor="input-todo">New Task:</label>
@@ -20,7 +22,9 @@ function Add({ addTodo }) {
         value={text}
         onChange={(event) => setText(event.target.value)}
       />
-      <Button type="submit">Add</Button>
+      <Button disabled={!text || text.length > 50} type="submit">
+        Add
+      </Button>
     </Form>
   )
 }
@@ -45,7 +49,7 @@ const TextInput = styled.input`
   width: 60%;
 `
 const Button = styled.button`
-  background: transparent;
+  background: ${(props) => (props.disabled ? 'red' : 'green')};
   color: #fff;
   padding: 10px 20px;
   width: 15%;

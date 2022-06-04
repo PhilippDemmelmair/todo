@@ -55,7 +55,7 @@ const HeaderStyle = styled.header`
   background-color: #282c34;
   height: 10vh;
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   align-items: center;
   justify-content: space-around;
   border-bottom: 1px solid #fff;
