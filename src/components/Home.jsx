@@ -11,7 +11,6 @@ function Home() {
       state.todos.filter((todo) => !todo.archived).map((todo) => todo.id),
     shallow
   )
-  console.table(todoIds)
   return (
     <>
       <Body>

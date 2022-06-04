@@ -5,5 +5,5 @@ const Body = styled.body`
   background: #282c34;
   padding: 10vw;
 `
-// TODO how to export components
+
 export { Body }

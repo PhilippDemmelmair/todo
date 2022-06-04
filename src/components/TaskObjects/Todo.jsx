@@ -30,7 +30,7 @@ function Todo({ id }) {
 export { Todo }
 
 const Task = styled.article`
-  display: ${(props) => (props.archived ? 'none' : 'flex')};
+  display: flex;
   background: ${(props) => (props.completed ? 'green' : 'red')};
   height: 10vh;
   border: 2px solid #fff;
