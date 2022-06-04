@@ -11,7 +11,7 @@ function Todo({ id }) {
     <>
       <Task completed={todo.completed} archived={todo.archived}>
         {todo.text}
-
+        {todo.createdAt}
         <ButtonBox>
           <Button onClick={() => toggleComplete(id)}>
             {todo.completed ? 'Open again' : 'Close now'}
