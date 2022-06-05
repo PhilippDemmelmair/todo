@@ -9,8 +9,22 @@ function Todo({ id }) {
   const todo = useTodo((state) => state.todos.find((todo) => todo.id === id))
   const created = new Date(todo.createdAt).toLocaleString()
 
-  function timePassed() {
+  function timePassedOpen() {
     const time = (Date.parse(Date()) - Date.parse(todo.createdAt)) / 1000
+    const days = Math.floor(time / (60 * 60 * 24))
+    const hours =
+      time / (60 * 60) < 24
+        ? Math.floor(time / (60 * 60))
+        : Math.floor(time / (60 * 60)) % 24
+    const min =
+      time / 60 < 60 ? Math.floor(time / 60) : Math.floor(time / 60) % 60
+    const openTime = days + ' Days ' + hours + ' Hours ' + min + ' Min'
+    return openTime
+  }
+
+  function timePassedClose() {
+    const time =
+      (Date.parse(todo.completedAt) - Date.parse(todo.createdAt)) / 1000
     const days = Math.floor(time / (60 * 60 * 24))
     const hours =
       time / (60 * 60) < 24
@@ -31,7 +45,12 @@ function Todo({ id }) {
         </TaskTitle>
         <TaskText>
           <p>Opened: {created}</p>
-          <p>Open since: {timePassed()}</p>
+          <p>
+            {todo.completed
+              ? 'Open for: ' + timePassedClose()
+              : 'OpenSince' + timePassedOpen()}
+            {}
+          </p>
           <TaskDescription>{todo.description}</TaskDescription>
         </TaskText>
 

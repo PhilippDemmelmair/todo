@@ -2,21 +2,6 @@ import create from 'zustand'
 import { nanoid } from 'nanoid'
 import { persist } from 'zustand/middleware'
 
-const defaultTask = [
-  // TODO kann wahrscheinlich raus
-  {
-    id: nanoid(),
-    task: 'write new task',
-    completed: false,
-    archived: false,
-  },
-]
-
-// function createdAt() {
-//   const time = getDate()
-//   return time
-// }
-
 const useTodo = create(
   persist(
     (set) => ({
@@ -26,7 +11,15 @@ const useTodo = create(
         set((state) => ({
           todos: state.todos.map((todo) => {
             if (id === todo.id) {
-              return { ...todo, completed: !todo.completed }
+              if (todo.completed) {
+                return { ...todo, completed: !todo.completed, completedAt: '' }
+              } else {
+                return {
+                  ...todo,
+                  completed: !todo.completed,
+                  completedAt: Date(),
+                }
+              }
             }
             return todo
           }),
@@ -35,7 +28,6 @@ const useTodo = create(
       toggleArchived: (id) =>
         set((state) => ({
           todos: state.todos.map((todo) => {
-            console.log('toggle archived')
             if (id === todo.id) {
               return { ...todo, archived: !todo.archived }
             }
