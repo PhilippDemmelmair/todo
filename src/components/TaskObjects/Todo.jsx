@@ -7,11 +7,22 @@ function Todo({ id }) {
   const toggleArchived = useTodo((state) => state.toggleArchived)
   const deleteTask = useTodo((state) => state.deleteTask)
   const todo = useTodo((state) => state.todos.find((todo) => todo.id === id))
+
+  console.log(Date.parse(Date.parse(Date()) - Date.parse(todo.createdAt)))
+
   return (
     <>
       <Task completed={todo.completed} archived={todo.archived}>
         {todo.text}
-        {todo.createdAt}
+
+        <p>Opened:{todo.createdAt}</p>
+        <p>
+          Open since:{' '}
+          {(Date.parse(Date()) - Date.parse(todo.createdAt)) /
+            (1000 * 60 * 60 * 24 * 7)}
+          weeks
+          {/* TODO tidy this up */}
+        </p>
         <ButtonBox>
           <Button onClick={() => toggleComplete(id)}>
             {todo.completed ? 'Open again' : 'Close now'}
