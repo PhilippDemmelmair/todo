@@ -13,18 +13,22 @@ function Todo({ id }) {
   return (
     <>
       <Task completed={todo.completed} archived={todo.archived}>
-        {todo.text}
+        <TaskTitle>
+          {todo.text}
+          <span>Priorität: {todo.priority}</span>
+        </TaskTitle>
+        <TaskText>
+          <p>Opened:{todo.createdAt}</p>
+          <p>
+            Open since:{' '}
+            {(Date.parse(Date()) - Date.parse(todo.createdAt)) /
+              (1000 * 60 * 60 * 24 * 7)}
+            weeks
+            {/* TODO tidy this up */}
+          </p>
+          <TaskDescription>{todo.description}</TaskDescription>
+        </TaskText>
 
-        <p>Opened:{todo.createdAt}</p>
-        <p>
-          Open since:{' '}
-          {(Date.parse(Date()) - Date.parse(todo.createdAt)) /
-            (1000 * 60 * 60 * 24 * 7)}
-          weeks
-          {/* TODO tidy this up */}
-        </p>
-        {todo.description}
-        <p>Priorität: {todo.priority}</p>
         <ButtonBox>
           <Button onClick={() => toggleComplete(id)}>
             {todo.completed ? 'Open again' : 'Close now'}
@@ -44,24 +48,37 @@ export { Todo }
 
 const Task = styled.article`
   display: flex;
-  background: ${(props) => (props.completed ? 'green' : 'red')};
-  height: 200px;
-  border: 2px solid #fff;
+  background: ${(props) => (props.completed ? '#009B72' : '#D00000')};
+  border: 2px solid #eae9ec;
   border-radius: 16px;
-  flex-flow: row nowrap;
+  flex-flow: column nowrap;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2vw;
+  padding: 2vw;
   margin: 20px auto;
-  color: #fff;
+  color: #eae9ec;
   font-size: 1.2rem;
+`
+const TaskTitle = styled.section`
+  border-bottom: 1px solid #eae9ec;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+`
+
+const TaskText = styled.section`
+  width: 100%;
+`
+
+const TaskDescription = styled.p`
+  width: 100%;
 `
 const Button = styled.button`
   width: 12vw;
   background: transparent;
-  color: #fff;
+  color: #eae9ec;
   border-radius: 8px;
-  border: 2px solid #fff;
+  border: 2px solid #eae9ec;
   padding: 10px 20px;
   text-align: center;
 `
