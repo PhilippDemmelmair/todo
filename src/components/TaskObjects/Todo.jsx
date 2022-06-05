@@ -7,10 +7,20 @@ function Todo({ id }) {
   const toggleArchived = useTodo((state) => state.toggleArchived)
   const deleteTask = useTodo((state) => state.deleteTask)
   const todo = useTodo((state) => state.todos.find((todo) => todo.id === id))
-
   const created = new Date(todo.createdAt).toLocaleString()
-  //
-  console.log(created)
+
+  function timePassed() {
+    const time = (Date.parse(Date()) - Date.parse(todo.createdAt)) / 1000
+    const days = Math.floor(time / (60 * 60 * 24))
+    const hours =
+      time / (60 * 60) < 24
+        ? Math.floor(time / (60 * 60))
+        : Math.floor(time / (60 * 60)) % 24
+    const min =
+      time / 60 < 60 ? Math.floor(time / 60) : Math.floor(time / 60) % 60
+    const openTime = days + ' Days ' + hours + ' Hours ' + min + ' Min'
+    return openTime
+  }
 
   return (
     <>
@@ -21,13 +31,7 @@ function Todo({ id }) {
         </TaskTitle>
         <TaskText>
           <p>Opened: {created}</p>
-          <p>
-            Open since:{' '}
-            {(Date.parse(Date()) - Date.parse(todo.createdAt)) /
-              (1000 * 60 * 60 * 24 * 7)}
-            weeks
-            {/* TODO tidy this up */}
-          </p>
+          <p>Open since: {timePassed()}</p>
           <TaskDescription>{todo.description}</TaskDescription>
         </TaskText>
 
