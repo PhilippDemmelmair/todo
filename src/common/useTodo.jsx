@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid'
 import { persist } from 'zustand/middleware'
 
 const defaultTask = [
+  // TODO kann wahrscheinlich raus
   {
     id: nanoid(),
     task: 'write new task',
@@ -10,6 +11,11 @@ const defaultTask = [
     archived: false,
   },
 ]
+
+// function createdAt() {
+//   const time = getDate()
+//   return time
+// }
 
 const useTodo = create(
   persist(
@@ -61,11 +67,16 @@ const useTodo = create(
           todos: state.todos.filter((task) => task.id !== id),
         })),
       // Function to add new task
-      //   TODO Input validation, if empoty string or if string to long
       addTodo: (text) =>
         set((state) => ({
           todos: [
-            { id: nanoid(), text: text, completed: false, archived: false },
+            {
+              id: nanoid(),
+              text: text,
+              completed: false,
+              archived: false,
+              createdAt: Date(),
+            },
             ...state.todos,
           ],
         })),
