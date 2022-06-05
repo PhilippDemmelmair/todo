@@ -3,6 +3,7 @@ import { Todo } from './TaskObjects/Todo'
 
 import useTodo from './../common/useTodo'
 import shallow from 'zustand/shallow'
+import styled from 'styled-components'
 
 function Archive() {
   const todoIds = useTodo(
@@ -15,7 +16,7 @@ function Archive() {
 
     <>
       <Body>
-        <h2>These are the Tasks you have finished</h2>
+        <ArchiveTitle>These are the Tasks you have finished</ArchiveTitle>
         {todoIds.map((id) => {
           return (
             <>
@@ -29,3 +30,8 @@ function Archive() {
 }
 
 export { Archive }
+
+const ArchiveTitle = styled.h2`
+  color: #eae9ec;
+  border-bottom: 1px solid #eae9ec;
+`
