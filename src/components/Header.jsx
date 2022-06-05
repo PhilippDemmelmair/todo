@@ -13,15 +13,15 @@ function Header() {
       <HeaderStyle>
         <Title>SUPER IMPORTANT TODO APP</Title>
         <NavBar>
-          <Link to="/">
+          <Link to="/" style={{ textDecoration: 'none' }}>
             <LinkText>Home</LinkText>
           </Link>
 
-          <Link to="/random">
+          <Link to="/random" style={{ textDecoration: 'none' }}>
             <LinkText>Random</LinkText>
           </Link>
 
-          <Link to="/archive">
+          <Link to="/archive" style={{ textDecoration: 'none' }}>
             <LinkText>Archive</LinkText>
           </Link>
         </NavBar>
@@ -33,7 +33,6 @@ function Header() {
 export { Header }
 
 const NavBar = styled.nav`
-  // border: 1px solid #a1a1a1;
   border-radius: 8px;
   width: 30vw;
   padding: 1vh;
@@ -42,26 +41,31 @@ const NavBar = styled.nav`
   justify-content: space-between;
 `
 const LinkText = styled.span`
-  color: #fff;
-  textdecoration: none;
+  color: #eae9ec;
   font-size: 1.2rem;
   margin: 1em;
-  border: 2px solid #fff;
+  border: 2px solid #eae9ec;
   border-radius: 8px;
   padding: 0.2em 1em;
+  transition: background 0.5s;
+  &:hover {
+    background: #eae9ec40;
+  }
 `
 
 const HeaderStyle = styled.header`
-  background-color: #282c34;
-  height: 10vh;
+  background-color: #a17bcc;
+  color: #eae9ec;
+  height: 100px;
+  position: sticky;
+  top: 0;
   display: flex;
   flex-flow: row wrap;
   align-items: center;
   justify-content: space-around;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid #eae9ec;
 `
 
 const Title = styled.h1`
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: 2em;
 `

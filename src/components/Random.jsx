@@ -22,14 +22,13 @@ function Random() {
   )
 
   function getRandom() {
-    console.log('Changed')
     setRandom(todoIds[Math.floor(Math.random() * (todoIds.length - 1))])
   }
 
   return (
     <>
       <Body>
-        <h2>Do this - NOW!!!</h2>
+        <RandomTitle>Do this - NOW!!!</RandomTitle>
         <Button onClick={() => getRandom()}>Shuffle</Button>
         {todoIds.length > 0 ? (
           <Todo key={random} id={random} />
@@ -43,11 +42,20 @@ function Random() {
 
 export { Random }
 
+const RandomTitle = styled.h2`
+  color: #eae9ec;
+  border-bottom: 1px solid #eae9ec;
+`
+
 const Button = styled.button`
   background: transparent;
   color: #fff;
   padding: 10px 20px;
-  width: 15%;
-  border: 2px solid #fff;
+  width: 100%;
+  font-size: 1.2em;
+  border: 2px solid #eae9ec;
   border-radius: 8px;
+  &:hover {
+    background: #eae9ec40;
+  }
 `
