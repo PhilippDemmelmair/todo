@@ -8,7 +8,9 @@ function Todo({ id }) {
   const deleteTask = useTodo((state) => state.deleteTask)
   const todo = useTodo((state) => state.todos.find((todo) => todo.id === id))
 
-  console.log(Date.parse(Date.parse(Date()) - Date.parse(todo.createdAt)))
+  const created = new Date(todo.createdAt).toLocaleString()
+  //
+  console.log(created)
 
   return (
     <>
@@ -18,7 +20,7 @@ function Todo({ id }) {
           <span>Priorität: {todo.priority}</span>
         </TaskTitle>
         <TaskText>
-          <p>Opened:{todo.createdAt}</p>
+          <p>Opened: {created}</p>
           <p>
             Open since:{' '}
             {(Date.parse(Date()) - Date.parse(todo.createdAt)) /

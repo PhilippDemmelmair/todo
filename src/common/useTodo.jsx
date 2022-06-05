@@ -20,26 +20,7 @@ const defaultTask = [
 const useTodo = create(
   persist(
     (set) => ({
-      todos: [
-        {
-          id: nanoid(),
-          text: 'Wash the car',
-          completed: false,
-          archived: false,
-        },
-        {
-          id: nanoid(),
-          text: 'Do the dishes',
-          completed: true,
-          archived: false,
-        },
-        {
-          id: nanoid(),
-          text: 'Read newspaper',
-          completed: false,
-          archived: false,
-        },
-      ],
+      todos: [],
       //  Function to switch between completed and open tasks
       toggleCompleted: (id) =>
         set((state) => ({
