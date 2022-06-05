@@ -23,6 +23,8 @@ function Todo({ id }) {
           weeks
           {/* TODO tidy this up */}
         </p>
+        {todo.description}
+        <p>Priorität: {todo.priority}</p>
         <ButtonBox>
           <Button onClick={() => toggleComplete(id)}>
             {todo.completed ? 'Open again' : 'Close now'}
@@ -43,7 +45,7 @@ export { Todo }
 const Task = styled.article`
   display: flex;
   background: ${(props) => (props.completed ? 'green' : 'red')};
-  height: 10vh;
+  height: 200px;
   border: 2px solid #fff;
   border-radius: 16px;
   flex-flow: row nowrap;
