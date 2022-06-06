@@ -127,12 +127,12 @@ function Add() {
           />
         </label>
       </Priority>
+      <SubTaskList>
+        {subTasks.map((task) => {
+          return <li>{task}</li>
+        })}
+      </SubTaskList>
       <SubTaskWrapper>
-        <ol>
-          {subTasks.map((task) => {
-            return <li>{task}</li>
-          })}
-        </ol>
         <SubTask htmlFor="subtask-input">
           <SubTaskInput
             placeholder="A new Subtask"
@@ -155,6 +155,10 @@ function Add() {
 }
 
 export { Add }
+
+const SubTaskList = styled.ul`
+  width: 100%;
+`
 
 const SubButton = styled.span`
   height: 100%;
