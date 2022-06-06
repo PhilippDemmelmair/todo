@@ -1,5 +1,4 @@
 // TODO add edit functionality
-// TODO input should disappear or return to a placeholder
 // TODO Error mesage should explain why you can't add a new Task
 
 import { useState } from 'react'
@@ -7,7 +6,7 @@ import styled from 'styled-components'
 import useTodo from '../../common/useTodo'
 
 function Add() {
-  const [text, setText] = useState('')
+  const [text, setText] = useState('What do you have to do?')
   const [description, setDescription] = useState('No description added.')
   const [priority, setPriority] = useState('0')
 
