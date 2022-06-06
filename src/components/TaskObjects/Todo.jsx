@@ -53,17 +53,20 @@ function Todo({ id }) {
           </p>
           <TaskDescription>{todo.description}</TaskDescription>
         </TaskText>
-
-        <ButtonBox>
-          <Button onClick={() => toggleComplete(id)}>
-            {todo.completed ? 'Open again' : 'Close now'}
-          </Button>
-          {todo.completed ? (
-            <Button onClick={() => toggleArchived(id)}>Archive</Button>
-          ) : (
-            <Button onClick={() => deleteTask(id)}>Delete</Button>
-          )}
-        </ButtonBox>
+        {todo.archived ? (
+          ''
+        ) : (
+          <ButtonBox>
+            <Button onClick={() => toggleComplete(id)}>
+              {todo.completed ? 'Open again' : 'Close now'}
+            </Button>
+            {todo.completed ? (
+              <Button onClick={() => toggleArchived(id)}>Archive</Button>
+            ) : (
+              <Button onClick={() => deleteTask(id)}>Delete</Button>
+            )}
+          </ButtonBox>
+        )}
       </Task>
     </>
   )
