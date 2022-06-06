@@ -17,7 +17,7 @@ function Add() {
     <Form
       onSubmit={(event) => {
         event.preventDefault()
-        addTodo(text, description, priority)
+        addTodo(text, description, priority, subTasks)
       }}
     >
       <TitleLabel htmlFor="input-todo">
@@ -141,7 +141,7 @@ function Add() {
             value={tmpSubTask}
             onChange={(event) => setTmpSubTask(event.target.value)}
           />
-          <SubButton onClick={() => setSubTasks([tmpSubTask, ...subTasks])}>
+          <SubButton onClick={() => setSubTasks([...subTasks, tmpSubTask])}>
             Add
           </SubButton>
         </SubTask>

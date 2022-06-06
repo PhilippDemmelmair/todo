@@ -52,6 +52,11 @@ function Todo({ id }) {
             {}
           </p>
           <TaskDescription>{todo.description}</TaskDescription>
+          <ul>
+            {todo.subTasks.map((task) => {
+              return <li>{task}</li>
+            })}
+          </ul>
         </TaskText>
         {todo.archived ? (
           ''

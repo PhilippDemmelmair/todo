@@ -40,7 +40,7 @@ const useTodo = create(
           todos: state.todos.filter((task) => task.id !== id),
         })),
       // Function to add new task
-      addTodo: (text, description, priority) =>
+      addTodo: (text, description, priority, subTasks) =>
         set((state) => ({
           todos: [
             {
@@ -51,6 +51,7 @@ const useTodo = create(
               completed: false,
               archived: false,
               createdAt: Date(),
+              subTasks: subTasks,
             },
             ...state.todos,
           ],
