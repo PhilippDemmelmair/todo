@@ -12,8 +12,6 @@ function Archive() {
     shallow
   )
   return (
-    //   TODO implement function that counts all tracked time
-
     <>
       <Body>
         <ArchiveTitle>These are the Tasks you have finished</ArchiveTitle>
