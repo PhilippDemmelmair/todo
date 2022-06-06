@@ -52,11 +52,11 @@ function Todo({ id }) {
             {}
           </p>
           <TaskDescription>{todo.description}</TaskDescription>
-          <ul>
+          <Subtasks>
             {todo.subTasks.map((task) => {
-              return <li>{task}</li>
+              return <p>{task}</p>
             })}
-          </ul>
+          </Subtasks>
         </TaskText>
         {todo.archived ? (
           ''
@@ -78,6 +78,14 @@ function Todo({ id }) {
 }
 
 export { Todo }
+
+const Subtasks = styled.section`
+  width: 100%;
+  border: 1px solid #eae9ec;
+  border-radius: 16px;
+  padding: 0.5vw;
+  margin: 0.5vw;
+`
 
 const Task = styled.article`
   display: flex;
