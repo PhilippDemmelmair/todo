@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import React from 'react'
 import useTodo from '../../common/useTodo'
+import { nanoid } from 'nanoid'
 
 function Todo({ id }) {
   const toggleComplete = useTodo((state) => state.toggleCompleted)
@@ -48,13 +49,13 @@ function Todo({ id }) {
           <p>
             {todo.completed
               ? 'Open for: ' + timePassedClose()
-              : 'OpenSince' + timePassedOpen()}
+              : 'Open Since: ' + timePassedOpen()}
             {}
           </p>
           <TaskDescription>{todo.description}</TaskDescription>
           <Subtasks>
             {todo.subTasks.map((task) => {
-              return <p>{task}</p>
+              return <SubTask key={nanoid()}>{task}</SubTask>
             })}
           </Subtasks>
         </TaskText>
@@ -78,6 +79,10 @@ function Todo({ id }) {
 }
 
 export { Todo }
+
+const SubTask = styled.p`
+  width: 100%;
+`
 
 const Subtasks = styled.section`
   width: 100%;

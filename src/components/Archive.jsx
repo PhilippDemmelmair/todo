@@ -16,11 +16,7 @@ function Archive() {
       <Body>
         <ArchiveTitle>These are the Tasks you have finished</ArchiveTitle>
         {todoIds.map((id) => {
-          return (
-            <>
-              <Todo key={id} id={id} />
-            </>
-          )
+          return <Todo key={id} id={id} />
         })}
       </Body>
     </>

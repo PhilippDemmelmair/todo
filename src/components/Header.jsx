@@ -11,7 +11,7 @@ function Header() {
   return (
     <>
       <HeaderStyle>
-        <Title>SUPER IMPORTANT TODO APP</Title>
+        <Title>Rubicon Todo</Title>
         <NavBar>
           <Link to="/" style={{ textDecoration: 'none' }}>
             <LinkText>Home</LinkText>
