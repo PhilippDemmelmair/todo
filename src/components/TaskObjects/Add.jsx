@@ -228,6 +228,7 @@ const Button = styled.button`
   background: ${(props) => (props.disabled ? '#D00000' : '#009B72')};
   color: #eae9ec;
   padding: 10px 20px;
+  margin: 20px auto;
   width: 15%;
   border: 2px solid #eae9ec;
   border-radius: 8px;

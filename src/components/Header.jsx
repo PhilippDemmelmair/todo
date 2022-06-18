@@ -6,12 +6,14 @@ import {
   Routes,
 } from 'react-router-dom'
 import styled from 'styled-components'
+import ReactLogo from './Logo.svg'
 
 function Header() {
   return (
     <>
       <HeaderStyle>
-        <Title>Rubicon Todo</Title>
+        <Logo src={ReactLogo} alt="Hexagon" />
+        <Title>Hexagon Todo</Title>
         <NavBar>
           <Link to="/" style={{ textDecoration: 'none' }}>
             <LinkText>Home</LinkText>
@@ -31,6 +33,10 @@ function Header() {
 }
 
 export { Header }
+
+const Logo = styled.img`
+  height: 80px;
+`
 
 const NavBar = styled.nav`
   border-radius: 8px;
