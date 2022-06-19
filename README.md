@@ -11,7 +11,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/PhilippDemmelmair/todo">
-    <img src="./src/Logo.svg" alt="Logo" width="80" height="80">
+    <img src="./images/Logo.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Hexagon Todo</h3>
@@ -60,22 +60,26 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+---
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+## ![Homepage](./images/Homepage_v010.png)
+
+## Hexagon - make your tasks hex-GONE!
+
+---
+
+<br><br>
+This is a very simple Todo-App, to help you, to organize your tasks. The app was made, as a part of my attention in a bootcamp, so the first version is really simple and has very few features. Target was, to build a first complete React App and we chose a Todo app as a first example. Here you can find, what I have made out of it.
+<br><br>
+I plan to build on from this and update it from time to time, so stay tuned. Also, if you have any ideas for future features, I would like to hear from you.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Built With
 
-- [Next.js](https://nextjs.org/)
 - [React.js](https://reactjs.org/)
-- [Vue.js](https://vuejs.org/)
-- [Angular](https://angular.io/)
-- [Svelte](https://svelte.dev/)
-- [Laravel](https://laravel.com)
-- [Bootstrap](https://getbootstrap.com)
-- [JQuery](https://jquery.com)
+- [zustand](https://www.npmjs.com/package/zustand)
+- [styled components](https://www.npmjs.com/package/styled-components)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -83,33 +87,34 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+This is how you set up a copy of Hexagon locally. Just follow these simple steps and enjoy my little taskmanager.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+You need npm.
 
-- npm
-  ```sh
-  npm install npm@latest -g
-  ```
+```sh
+npm install npm@latest -g
+```
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/PhilippDemmelmair/todo
    ```
-3. Install NPM packages
+2. Install NPM packages
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API'
-   ```
+
+### Starting
+
+Use this command to start the application.
+
+```sh
+npm start
+```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -117,9 +122,7 @@ This is an example of how to list things you need to use the software and how to
 
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
+Use this app, when you want to have a nice little Todo-App, which you can use in your browser. Keep track of your tasks. Priritize them. You can also add little Subtasks. Aslo, you have the possibility to archive a completed task. Another feature is, that you can see how long your task is open or how long a completed task was open.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -127,12 +130,13 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-  - [ ] Nested Feature
-
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+- [x] Taskmanagment
+  - [x] Subtasks
+  - [x] Priorities
+- [x] Archive
+- [x] Timetracking
+  - [x] Since when is a task open
+  - [x] How long was a task open
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -157,7 +161,9 @@ Don't forget to give the project a star! Thanks again!
 
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the MIT License.
+
+<!-- See `LICENSE.txt` for more information. -->
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -165,19 +171,21 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+Twitter: <a href="https://twitter.com/PhilDemmelmair">@PhilDemmelmair</a> <br>
+LinkedIn: <a href="https://www.linkedin.com/in/philipp-demmelmair-45755a1b7/">@Philipp Demmelmair</a> <br>
+E-Mail: <a href="mailto:donsilver24@gmail.com">donsilver24@gmail.com</a>
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/PhilippDemmelmair/todo](https://github.com/PhilippDemmelmair/todo)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- ACKNOWLEDGMENTS -->
 
-## Acknowledgments
+<!-- ## Acknowledgments
 
 - []()
 - []()
-- []()
+- []() -->
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
